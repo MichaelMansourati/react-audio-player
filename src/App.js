@@ -28,7 +28,9 @@ export default class AudioPlayer extends React.Component {
       this.positionHandle(position);
     });
   }
-
+  componentWillUnmount() {
+    this.audio.removeAllEventListeners();
+  }
   positionHandle = position => {
     let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
